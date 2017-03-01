@@ -1,0 +1,21 @@
+Nume: ION Bogdan Ionuț
+Grupa: CB332
+Tema a fost implementata in limbajul Java(jdk 1.8), folosind jflex pentru 
+parsarea input-ului. Am definit expresiile regulate precizate in enunt, si 
+apoi m-am folosit de "states", unde fiecare state face match pe o expresie 
+regulata. Am definit cate un state pentru fiecare multime din CFG, dar si 
+pentru separatorii dintre acestea. Atunci cand se face match pe ceva, 
+se ia o decizie cu textul pe care s-a facut match: ori raman in starea 
+curenta, ori trec in starea urmatoare. Ca si exemplu, am starea in care fac 
+match pe intreaga multime(e.g. alphabet), salvez intr-un stream ce am 
+citit si trec in starea urmatoare in care citesc din acest stream 
+caracter cu caracter pana la <<EOF>>. Pe partea de Java, am creat clase 
+pentru (non)terminals, alphabet, production rules si start symbol, in 
+care salvez ceea ce am parsat cu jflex. Pentru gasirea simbolurilor 
+inutile, ma uit la reguli, si intai gasesc nonterminalii care genereaza 
+imediat un terminal sau e. La pasul urmator, ma uit la regulile in care 
+nonterminalul din stanga regulii depinde doar de nonterminali utili 
+gasiti pana acum, si tot asa, pana nu mai se pot gasi nonterminali utili. 
+Pentru --has-e procedez asemanator, intai eliminand nonterminalii inutili 
+pentru a fi mai usor. Iar pentru --is-void, verific daca start symbol e 
+inutil. Mai multe detalii se regasesc in comentariile din cod.
